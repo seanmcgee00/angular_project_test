@@ -1,11 +1,15 @@
 (function() {
 
     var AccountController =  function() {
-        
+
     	var vm = this;
-        
+
         vm.isHidden = false;
-        
+        vm.order;
+        vm.fristNameColor;
+        vm.secondNameColor;
+        vm.accountColor;
+        //console.log(' get intail order '+vm.order);
         vm.accounts = [
         	{'firstName': 'Declan', 'secondName': 'Cordial','accountNumber': '1234'},
         	{'firstName': 'Niall','secondName': 'Mulready','accountNumber': '1235'},
@@ -22,12 +26,30 @@
         	{'firstName': 'Daleel','secondName': 'Ramjan','accountNumber': '1243'},
         	{'firstName': 'Ismael','secondName': 'Omar','accountNumber': '1243'}
         	];
-        
+
         vm.hideTable = function()
         {
         	vm.isHidden = !vm.isHidden
         };
-            
+
+        vm.setOrder= function(orderName){
+            vm.order=orderName;
+          //  console.log('Set order actioned button='+vm.order);
+        };
+
+        vm.setColor =function(column){
+          if(column=='firstName')
+          {
+            vm.fristNameColor={"color" : "Blue"} ;
+          }
+          else if(column=='secondName') {
+              vm.secondNameColor={"color" : "red"} ;
+            }
+          else {
+                  vm.accountColor={"color" : "yellow"};
+              }
+          };
+
     };
 
     angular.module('accountApp').controller('accountController', [AccountController]);

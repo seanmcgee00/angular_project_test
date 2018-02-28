@@ -20,26 +20,29 @@
         	<h3><span>Accounts table</span></h3>
         	<table class="table">
         		<tr>
-        			<th>{{'first_name' | uppercase}}</th>
-        			<th>{{'surname' | uppercase}}</th>
+        			<th ng-click="accountCtrl.setOrder('firstName')">{{'first_name' | uppercase}}</th>
+        			<th ng-click="accountCtrl.setOrder('secondName')">{{'surname' | uppercase}}</th>
         			<th>{{'account_number' | uppercase}}</th>
         		</tr>
-        		<tr ng-repeat="account in accountCtrl.accounts">
-        			<td>{{account.firstName}}</td>
-        			<td>{{account.secondName}}</td>
-        			<td>{{account.accountNumber}}</td>
+        		<tr ng-repeat="account in accountCtrl.accounts | orderBy:accountCtrl.order">
+        			<td  ng-style="accountCtrl.fristNameColor">{{account.firstName}}</td>
+        			<td  ng-style="accountCtrl.secondNameColor">{{account.secondName}}</td>
+        			<td  ng-style="accountCtrl.accountColor">{{account.accountNumber}}</td>
         		</tr>
         	</table>
         </div>
         <button class="btn"ng-click="accountCtrl.hideTable()">Hide accounts</button>
+        <button class="btn"ng-click="accountCtrl.setColor('firstName')">First Name</button>
+        <button class="btn"ng-click="accountCtrl.setColor('secondName')">Second Name</button>
+        <button class="btn"ng-click="accountCtrl.setColor('account')">Accounts</button>
 	</div>
-    
-	<link rel="stylesheet" href="scripts/bootstrap.min.css"> 
+
+	<link rel="stylesheet" href="scripts/bootstrap.min.css">
     <script src="scripts/jquery-2.1.4.min.js"></script>
     <script src="scripts/angular.min.js"></script>
     <script src="scripts/ui-router.min.js"></script>
     <script src="scripts/bootstrap.min.js"></script>
-    
+
     <script src="app/app.js"></script>
     <script src="app/controllers/account-controller.js"></script>
     </div>
